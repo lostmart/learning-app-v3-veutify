@@ -3,14 +3,14 @@
 <template>
   <main class="d-flex justify-center">
     <v-card class="w-100" max-width="580">
-      <v-card-title class="text-h6 text-md-h5 text-lg-h4 text-center"
+      <v-card-title class="text-h6 text-md-h5 text-lg-h4 text-center mt-5 mb-2"
         >Dónde has personas?</v-card-title
       >
       <v-card-text>
         <v-img
           aspect-ratio="16/9"
           max-width="480"
-          class="mx-auto"
+          class="mx-auto cover-img"
           cover
           lazy-src="https://picsum.photos/id/11/100/60"
           src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
@@ -30,7 +30,7 @@
         <v-divider class="mt-1"></v-divider>
         <v-btn
           rounded="sm"
-          class="text-button elevation-5 mx-auto"
+          class="text-button elevation-5 mx-auto mb-5"
           color="#3B7247"
           size="small"
           variant="flat"
@@ -50,5 +50,9 @@ button {
 }
 .v-card-actions {
   gap: 0.8em;
+}
+
+.cover-img {
+  border-radius: 2px;
 }
 </style>
