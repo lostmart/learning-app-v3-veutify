@@ -1,4 +1,35 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const selected = ref("");
+
+/* exercise data  */
+const exData = ref({
+  options: ["el amor", "la ternura", "otras", "abejas"],
+  correct: "el amor",
+});
+
+/*  methods  */
+
+const handleOptions = (option) => {
+  if (selected.value === option) {
+    selected.value = "";
+  } else {
+    selected.value = option;
+  }
+  // console.log(selected.value);
+};
+
+const handleSubmit = () => {
+  if (selected.value === exData.value.correct) {
+    console.log("correcto !!!");
+  } else {
+    console.log("no correcto !!");
+  }
+};
+
+// console.log(count.value.options)
+</script>
 
 <template>
   <main class="d-flex justify-center">
@@ -16,24 +47,29 @@
           src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
         ></v-img>
       </v-card-text>
+
       <v-card-actions class="d-flex flex-column">
         <v-btn
-          v-for="n in 4"
+          v-for="option in exData.options"
           rounded="sm"
           class="text-button elevation-5 mx-auto"
-          color="#4B80DD"
+          :color="selected === option ? '#2e5496' : '#4B80DD'"
           size="small"
           variant="flat"
+          :value="option"
+          @click="() => handleOptions(option)"
         >
-          Button
+          {{ option }}
         </v-btn>
         <v-divider class="mt-1"></v-divider>
         <v-btn
           rounded="sm"
           class="text-button elevation-5 mx-auto mb-5"
-          color="#3B7247"
           size="small"
           variant="flat"
+          :color="selected ? '#3B7247' : 'grey'"
+          :disabled="selected ? false : true"
+          @click="handleSubmit"
         >
           Submit
         </v-btn>
