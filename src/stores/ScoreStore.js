@@ -5,4 +5,9 @@ export const useScoreStore = defineStore("scoreStore", {
     score: 0,
     name: "User one", // this could be in its own store, really
   }),
+  actions: {
+    addScrore() {
+      this.score++;
+    },
+  },
 });

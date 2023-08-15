@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from "vue";
+import { useScoreStore } from "../stores/ScoreStore.js";
+import FeedBack from "@/components/FeedBack.vue";
+
+const userScore = useScoreStore();
 
 const selected = ref("");
+const correct = ref(false);
+const showFeedback = ref(false);
 
 /* exercise data  */
 const exData = ref({
@@ -23,16 +29,25 @@ const handleOptions = (option) => {
 const handleSubmit = () => {
   if (selected.value === exData.value.correct) {
     console.log("correcto !!!");
+    correct.value = true;
+    userScore.addScrore();
+    showFeedback.value = true;
+    setInterval(() => (showFeedback.value = false), 1800);
   } else {
     console.log("no correcto !!");
+    correct.value = false;
+    showFeedback.value = true;
+    setInterval(() => (showFeedback.value = false), 1800);
   }
+  clearInterval();
 };
 
 // console.log(count.value.options)
 </script>
 
 <template>
-  <main class="d-flex justify-center">
+  <FeedBack v-if="showFeedback" :correct="correct" />
+  <main v-else class="d-flex justify-center">
     <v-card class="w-100" max-width="580">
       <v-card-title class="text-h6 text-md-h5 text-lg-h4 text-center mt-5 mb-2"
         >Dónde has personas?</v-card-title
