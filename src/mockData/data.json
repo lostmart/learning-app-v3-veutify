@@ -1,0 +1,11 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"question": "Donde hay personas?",
+			"options": ["el amor", "la ternura", "otras", "abejas"],
+			"correct": "el amor",
+			"imgUrl": "https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+		}
+	]
+}
